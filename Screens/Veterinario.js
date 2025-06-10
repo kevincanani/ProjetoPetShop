@@ -1,13 +1,13 @@
 import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 
-export default function Login({navigation}) {
+export default function Veterinario() {
     return(
         <View style={styles.containerLogin}>
-            <Text style={styles.textTitle}>Login</Text>
+            <Text style={styles.textTitle}>Veterinario</Text>
 
             <TextInput
             style={styles.txtInput}
-            placeholder='Email'
+            placeholder='Animal'
             placeholderTextColor={'black'}
             // value={email}
             // onChangeText={setEmail}
@@ -15,7 +15,25 @@ export default function Login({navigation}) {
 
             <TextInput
             style={styles.txtInput}
-            placeholder='Senha'
+            placeholder='Raça'
+            placeholderTextColor={'black'}
+            // value={senha}
+            // onChangeText={setSenha}
+            secureTextEntry={true}
+            />
+
+            <TextInput
+            style={styles.txtInput}
+            placeholder='Tipo de Consulta'
+            placeholderTextColor={'black'}
+            // value={senha}
+            // onChangeText={setSenha}
+            secureTextEntry={true}
+            />
+
+            <TextInput
+            style={styles.txtInput}
+            placeholder='Tipo de Consulta'
             placeholderTextColor={'black'}
             // value={senha}
             // onChangeText={setSenha}
@@ -41,12 +59,12 @@ const styles = StyleSheet.create({
     txtInput:{
         width: 300,
         borderWidth: 2,
-        borderColor: 'rgba(0, 111, 255, 1)',
+        borderColor: '#7B00FF',
         borderRadius: 10,
         padding: 10,
         alignSelf: 'center',
         margin: 12,
-        backgroundColor: 'rgba(6, 242, 124, 1)'
+        backgroundColor: '#00D8CD'
     },
     textTitle:{
         fontSize: 30,
@@ -61,9 +79,9 @@ const styles = StyleSheet.create({
         padding: 15,
         paddingLeft: 30,
         paddingRight: 30,
-        borderColor: 'rgba(0, 111, 255, 1)',
+        borderColor: '#7B00FF',
         borderRadius: 10,
-        backgroundColor: 'rgba(6, 242, 124, 1)',
+        backgroundColor: '#00D8CD',
         margin: 15
     }
 })
