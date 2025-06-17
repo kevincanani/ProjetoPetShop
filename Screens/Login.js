@@ -1,30 +1,55 @@
 import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import Veterinario from "./Veterinario";
+import { useState } from 'react';
+import { auth } from "../controller";
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function Login({navigation}) {
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+
+    const VerificaUser = () => {
+        signInWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+                    navigation.navigate('Veterinario')
+            })
+            .catch((error) => {
+                console.log('Erro ao logar! ',error.message);
+            });
+    }
+
     return(
         <View style={styles.containerLogin}>
             <Text style={styles.textTitle}>Login</Text>
 
-            <TextInput
-            style={styles.txtInput}
-            placeholder='Email'
-            placeholderTextColor={'black'}
-            // value={email}
-            // onChangeText={setEmail}
-            />
+            <View style={styles.viewInput}>
+                <TextInput
+                style={styles.txtInput}
+                placeholder='Email'
+                placeholderTextColor={'black'}
+                value={email}
+                onChangeText={setEmail}
+                />
 
-            <TextInput
-            style={styles.txtInput}
-            placeholder='Senha'
-            placeholderTextColor={'black'}
-            // value={senha}
-            // onChangeText={setSenha}
-            secureTextEntry={true}
-            />
+                <TextInput
+                style={styles.txtInput}
+                placeholder='Senha'
+                placeholderTextColor={'black'}
+                value={senha}
+                onChangeText={setSenha}
+                secureTextEntry={true}
+                />
 
-            <Text style={styles.txt}>Ainda não possui uma conta? Cadastre-se agora.</Text>
+                <TouchableOpacity
+                onPress={VerificaUser}>
+                    <Text style={styles.txtBtn}>Efetuar Login</Text>
+                </TouchableOpacity>
+            </View>
 
-            <TouchableOpacity>
+            <Text style={styles.txt}>Ainda não possui uma conta?</Text>
+            <Text style={styles.txt}>Cadastre-se agora.</Text>
+
+            <TouchableOpacity style={styles.btn}>
                 <Text style={styles.txtBtn}>Cadastre-se</Text>
             </TouchableOpacity>
 
@@ -39,17 +64,19 @@ const styles = StyleSheet.create({
         color: '#FFFFFF'
     },
     txtInput:{
-        width: 300,
+        fontWeight: 'bold',
+        width: 325,
         borderWidth: 2,
         borderColor: 'rgba(0, 111, 255, 1)',
-        borderRadius: 10,
-        padding: 10,
+        borderRadius: 15,
+        padding: 15,
         alignSelf: 'center',
-        margin: 12,
+        margin: 15,
         backgroundColor: 'rgba(6, 242, 124, 1)'
     },
     textTitle:{
-        fontSize: 30,
+        padding: 25,
+        fontSize: 45,
         fontWeight: 'bold',
         alignSelf: 'center'
     },
@@ -57,13 +84,27 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     txtBtn:{
+        fontWeight: 'bold',
         alignSelf: 'center',
         padding: 15,
         paddingLeft: 30,
         paddingRight: 30,
         borderColor: 'rgba(0, 111, 255, 1)',
+        borderWidth: 2,
         borderRadius: 10,
         backgroundColor: 'rgba(6, 242, 124, 1)',
         margin: 15
+    },
+    txt:{
+        fontWeight: 'bold',
+        textAlign: 'justify',
+        alignSelf: 'center',
+        fontSize: 25
+    },
+    viewInput:{
+        padding: 65
+    },
+    btn:{
+        padding: 30
     }
 })

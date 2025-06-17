@@ -7,6 +7,14 @@ export default function Veterinario() {
 
             <TextInput
             style={styles.txtInput}
+            placeholder='Banho e Tosa ou Consulta'
+            placeholderTextColor={'black'}
+            // value={email}
+            // onChangeText={setEmail}
+            />
+
+            <TextInput
+            style={styles.txtInput}
             placeholder='Animal'
             placeholderTextColor={'black'}
             // value={email}
@@ -45,9 +53,15 @@ export default function Veterinario() {
             // onChangeText={setSenha}
             />
 
+        <View style={styles.viewBtn}>
             <TouchableOpacity>
-                <Text style={styles.txtBtn}>Agendar</Text>
+                <Text style={styles.txtBtn}>Regendar</Text>
             </TouchableOpacity>
+
+            <TouchableOpacity>
+                <Text style={styles.txtBtn2}>Cancelar</Text>
+            </TouchableOpacity>
+        </View>
 
         </View>
     )
@@ -87,5 +101,19 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: '#00D8CD',
         margin: 15
+    },
+    txtBtn2:{
+        alignSelf: 'center',
+        padding: 15,
+        paddingLeft: 30,
+        paddingRight: 30,
+        borderColor: '#7B00FF',
+        borderWidth: 2,
+        borderRadius: 10,
+        backgroundColor: '#ff0000',
+        margin: 15
+    },
+    viewBtn:{
+        flexDirection: 'row'
     }
 })
