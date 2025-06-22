@@ -1,51 +1,80 @@
 import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { useState } from "react";
+import { db } from "../controller";
+import { collection, doc, addDoc } from 'firebase/firestore';
 
 export default function Veterinario() {
+
+    const[animal, setAnimal] = useState("");
+    const[data, setData] = useState("");
+    const[horario, setHorario] = useState("");
+    const[raca, setRaca] = useState("");
+    const[tipoconsulta, setTipoConsulta] = useState("");
+
+    const AgendarVeterinario = async () => {
+        try {
+            await addDoc(collection(db, 'veterinario'), {
+                animal,
+                data,
+                horario,
+                raca,
+                tipoconsulta,
+            })
+            setAnimal();
+            setData();
+            setHorario();
+            setRaca();
+            setTipoConsulta();
+        } catch {
+            console.log('Erro ao cadastrar produto! ', error)
+        }
+    }
+
     return(
         <View style={styles.containerLogin}>
-            <Text style={styles.textTitle}>Veterinario</Text>
+            <Text style={styles.textTitle}>Agendar veterinário</Text>
 
             <TextInput
             style={styles.txtInput}
             placeholder='Animal'
             placeholderTextColor={'black'}
-            // value={email}
-            // onChangeText={setEmail}
+            value={animal}
+            onChangeText={setAnimal}
             />
 
             <TextInput
             style={styles.txtInput}
             placeholder='Raça'
             placeholderTextColor={'black'}
-            // value={senha}
-            // onChangeText={setSenha}
+            value={raca}
+            onChangeText={setRaca}
             />
 
             <TextInput
             style={styles.txtInput}
             placeholder='Tipo de Consulta'
             placeholderTextColor={'black'}
-            // value={senha}
-            // onChangeText={setSenha}
+            value={tipoconsulta}
+            onChangeText={setTipoConsulta}
             />
 
             <TextInput
             style={styles.txtInput}
             placeholder='Data da Consulta'
             placeholderTextColor={'black'}
-            // value={senha}
-            // onChangeText={setSenha}
+            value={data}
+            onChangeText={setData}
             />
 
             <TextInput
             style={styles.txtInput}
             placeholder='Horário da Consulta'
             placeholderTextColor={'black'}
-            // value={senha}
-            // onChangeText={setSenha}
+            value={horario}
+            onChangeText={setHorario}
             />
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={AgendarVeterinario}>
                 <Text style={styles.txtBtn}>Agendar</Text>
             </TouchableOpacity>
 
@@ -60,17 +89,19 @@ const styles = StyleSheet.create({
         color: '#FFFFFF'
     },
     txtInput:{
-        width: 300,
+        fontWeight: 'bold',
+        width: 325,
         borderWidth: 2,
         borderColor: '#7B00FF',
-        borderRadius: 10,
-        padding: 10,
+        borderRadius: 15,
+        padding: 15,
         alignSelf: 'center',
-        margin: 12,
+        margin: 15,
         backgroundColor: '#00D8CD'
     },
     textTitle:{
-        fontSize: 30,
+        padding: 25,
+        fontSize: 45,
         fontWeight: 'bold',
         alignSelf: 'center'
     },
