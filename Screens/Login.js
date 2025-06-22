@@ -49,7 +49,8 @@ export default function Login({navigation}) {
             <Text style={styles.txt}>Ainda não possui uma conta?</Text>
             <Text style={styles.txt}>Cadastre-se agora.</Text>
 
-            <TouchableOpacity style={styles.btn}>
+            <TouchableOpacity style={styles.btn}
+            onPress={() => navigation.navigate('Cadastro')}>
                 <Text style={styles.txtBtn}>Cadastre-se</Text>
             </TouchableOpacity>
 
