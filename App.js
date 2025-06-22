@@ -2,9 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 import Login from './Screens/Login';
+import Cadastro from './Screens/Cadastro';
+import Home from './Screens/Home';
 import Veterinario from './Screens/Veterinario';
-import Reagendar from './Screens/Reagendar'
-import Visualizar from './Screens/Visualizar'
+import BanhoTosa from './Screens/BanhoTosa';
+import Reagendar from './Screens/Reagendar';
+import Visualizar from './Screens/Visualizar';
 
 import 'react-native-gesture-handler';
 
@@ -18,11 +21,13 @@ function BottomTabs() {
     <Tab.Navigator screenOptions={{
       headerStyle:{backgroundColor: '#06f27c'},
       headerTintColor: 'white',
-      tabBarActiveBackgroundColor: '#e2ab78',
-      tabBarInactiveBackgroundColor: '#e7b98e',
+      tabBarActiveBackgroundColor: '#06f27c',
+      tabBarInactiveBackgroundColor: '#06f27c',
       tabBarActiveTintColor: 'black'
     }}>
-      <Tab.Screen name='Veterinario' component={Veterinario}/>
+      <Tab.Screen name='Home' component={Home}/>
+      <Tab.Screen name='Veterinário' component={Veterinario}/>
+      <Tab.Screen name='Banho e Tosa' component={BanhoTosa}/>
       <Tab.Screen name='Reagendar' component={Reagendar}/>
       <Tab.Screen name='Visualizar' component={Visualizar}/>
     </Tab.Navigator>
@@ -41,6 +46,7 @@ export default function App() {
           headerTintColor: 'white',
         }}>
           <Stack.Screen name='Login' component={Login}/>
+          <Stack.Screen name='Cadastro' component={Cadastro}/>
           <Stack.Screen options={{headerShown:false}} name='Veterinario' component={BottomTabs}/>
         </Stack.Navigator>
       </NavigationContainer>
