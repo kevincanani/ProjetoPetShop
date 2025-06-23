@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, Button, TouchableOpacity } from "react-native";
 
-export default function CardConsulta({id, animal, raca, tipoconsulta, especificacoes, data, horario, deletar}){
+export default function CardConsulta({id, animal, raca, tipoconsulta, especificacoes, data, horario, remover}){
     return(
         <View style={styles.card}>
             <Text style={styles.flatList}>{id}</Text>
@@ -10,18 +10,13 @@ export default function CardConsulta({id, animal, raca, tipoconsulta, especifica
             <Text style={styles.flatList}>{especificacoes}</Text>
             <Text style={styles.flatList}>{data}</Text>
             <Text style={styles.flatList}>{horario}</Text>
-
-            <TouchableOpacity onPress={deletar}>
-                <Text style={styles.txtBtn}>Remover</Text>
-            </TouchableOpacity>
-
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     card:{
-        backgroundColor: '#fff',
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
         padding: 20,
         margin: 10,
         borderRadius: 8
@@ -39,6 +34,7 @@ const styles = StyleSheet.create({
     raca:{
         color: 'rgb(0, 2, 92)',
         fontWeight: 'bold',
+        fontSize: 15
     },
     flatList:{
         color: 'rgb(0, 2, 92)',

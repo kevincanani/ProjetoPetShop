@@ -1,25 +1,13 @@
-import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, FlatList } from "react-native";
+import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, FlatList, ScrollView } from "react-native";
 import { useState, useEffect } from "react";
 import CardConsulta from "../components/cardConsulta";
 import { db } from "../controller";
-import { collection, doc, Firestore, getDocs } from 'firebase/firestore';
+import { collection, doc, query, where, Firestore, getDocs, deleteDoc } from 'firebase/firestore';
 import firebase from "firebase/compat/app";
 // import { useCarrinho } from "../CarrinhoProvider";
 // import Carrinho from "./Carrinho";
 
 export default function Visualizar() {
-
-    const DeletarBanhoTosa = async () => {
-            try {
-                Firestore()
-                .collection('veterinario')
-                .doc(id)
-                .delete()
-            } catch {
-                console.log('Erro ao cadastrar produto! ', error)
-            }
-        }
-
     const [veterinario, setVeterinario] = useState([])
     // const {adicionarProduto} = useCarrinho()
 
@@ -58,6 +46,7 @@ export default function Visualizar() {
     }, []);
 
     return(
+        <ScrollView>
         <View style={styles.containerLogin}>
             <Text style={styles.textTitle}>Suas consultas: </Text>
 
@@ -67,13 +56,12 @@ export default function Visualizar() {
             data={veterinario}
             renderItem={({item}) => (
                 <CardConsulta
-                //id={item.id}
+                id={item.id}
                 animal={item.animal}
                 raca={item.raca}
                 tipoconsulta={item.tipoconsulta}
                 data={item.data}
                 horario={item.horario}
-                // deletar={()=>{DeletarBanhoTosa(item)}}
                 // imagem={item.imagem}
                 // comprar={()=>{
                 //     adicionarProduto(item);
@@ -90,13 +78,12 @@ export default function Visualizar() {
             data={banhotosa}
             renderItem={({item}) => (
                 <CardConsulta
-                //id={item.id}
+                id={item.id}
                 animal={item.animal}
                 raca={item.raca}
                 especificacoes={item.especificacoes}
                 data={item.data}
                 horario={item.horario}
-                // deletar={()=>{DeletarBanhoTosa(item)}}
                 // imagem={item.imagem}
                 // comprar={()=>{
                 //     adicionarProduto(item);
@@ -112,6 +99,7 @@ export default function Visualizar() {
             </TouchableOpacity>
 
         </View>
+        </ScrollView>
     )
 }
 

@@ -1,99 +1,119 @@
-import { updateDoc } from "firebase/firestore";
-import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { useState } from "react";
 import { db } from "../controller";
-import { collection, doc, addDoc } from 'firebase/firestore';
+import { collection, doc, addDoc, updateDoc, deleteDoc, or } from 'firebase/firestore';
 
 export default function Veterinario() {
 
-    const[animal, setAnimal] = useState("");
-    const[data, setData] = useState("");
-    const[horario, setHorario] = useState("");
-    const[raca, setRaca] = useState("");
-    const[especificacoes, setEspecificacoes] = useState("");
+    const[consultaId, setConsultaId] = useState("");
 
-    const ReagendarBanhoTosa = async () => {
+    const[animalNovo, setAnimalNovo] = useState("");
+    const[dataNovo, setDataNovo] = useState("");
+    const[horarioNovo, setHorarioNovo] = useState("");
+    const[racaNovo, setRacaNovo] = useState("");
+    const[tipoconsultaNovo, setTipoConsultaNovo] = useState("");
+
+    const AlterarConsulta = async () => {
         try {
-            await updateDoc(collection(db, 'banhotosa'), {
-                animal,
-                data,
-                horario,
-                raca,
-                especificacoes,
+            await updateDoc(collection(db, 'veterinario', consultaId), {
+                animalNovo,
+                dataNovo,
+                horarioNovo,
+                racaNovo,
+                tipoconsultaNovo,
             })
-            setAnimal();
-            setData();
-            setHorario();
-            setRaca();
-            setEspecificacoes();
+            setAnimalNovo();
+            setDataNovo();
+            setHorarioNovo();
+            setRacaNovo();
+            setTipoConsultaNovo();
         } catch {
             console.log('Erro ao cadastrar produto! ', error)
         }
     }
 
+    const RemoverConsulta = async () => {
+        try {
+            await deleteDoc(doc(db, 'veterinario', consultaId));
+            console.log('Consulta removida com sucesso!');
+        } catch (error) {
+            console.log('Erro ao remover consulta: ', error);
+        }
+    };
+
     return(
+        <ScrollView>
         <View style={styles.containerLogin}>
             <Text style={styles.textTitle}>Reagendar ou Cancelar Consulta</Text>
 
             <TextInput
             style={styles.txtInput}
+            placeholder='Informe o ID da consulta'
+            placeholderTextColor={'black'}
+            value={consultaId}
+            onChangeText={setConsultaId}
+            />
+
+            {/* <TextInput
+            style={styles.txtInput}
             placeholder='Banho e Tosa ou Consulta'
             placeholderTextColor={'black'}
-            // value={email}
-            // onChangeText={setEmail}
-            />
+            value={email}
+            onChangeText={setEmail}
+            /> */}
 
             <TextInput
             style={styles.txtInput}
             placeholder='Animal'
             placeholderTextColor={'black'}
-            value={animal}
-            onChangeText={setAnimal}
+            value={animalNovo}
+            onChangeText={setAnimalNovo}
             />
 
             <TextInput
             style={styles.txtInput}
             placeholder='Raça'
             placeholderTextColor={'black'}
-            value={raca}
-            onChangeText={setRaca}
+            value={racaNovo}
+            onChangeText={setRacaNovo}
             />
 
             <TextInput
             style={styles.txtInput}
             placeholder='Especificações'
             placeholderTextColor={'black'}
-            value={especificacoes}
-            onChangeText={setEspecificacoes}
+            // value={especificacoes}
+            // onChangeText={setEspecificacoes}
             />
 
             <TextInput
             style={styles.txtInput}
             placeholder='Data da Consulta'
             placeholderTextColor={'black'}
-            value={data}
-            onChangeText={setData}
+            value={dataNovo}
+            onChangeText={setDataNovo}
             />
 
             <TextInput
             style={styles.txtInput}
             placeholder='Horário da Consulta'
             placeholderTextColor={'black'}
-            value={horario}
-            onChangeText={setHorario}
+            value={horarioNovo}
+            onChangeText={setHorarioNovo}
             />
 
         <View style={styles.viewBtn}>
-            <TouchableOpacity onPress={ReagendarBanhoTosa}>
+            <TouchableOpacity onPress={AlterarConsulta}>
                 <Text style={styles.txtBtn}>Regendar</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={RemoverConsulta}>
                 <Text style={styles.txtBtn2}>Cancelar</Text>
             </TouchableOpacity>
         </View>
 
         </View>
+        </ScrollView>
     )
 }
 

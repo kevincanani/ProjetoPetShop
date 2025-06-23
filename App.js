@@ -9,6 +9,10 @@ import BanhoTosa from './Screens/BanhoTosa';
 import Reagendar from './Screens/Reagendar';
 import Visualizar from './Screens/Visualizar';
 
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+
 import 'react-native-gesture-handler';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -19,17 +23,33 @@ function BottomTabs() {
   const Tab = createBottomTabNavigator();
   return(
     <Tab.Navigator screenOptions={{
+      headerRight: (props)  => <Image style={{width: 50, height:50}} source={require('./assets/logo_petshop.png')}/>,
       headerStyle:{backgroundColor: '#06f27c'},
       headerTintColor: 'white',
       tabBarActiveBackgroundColor: '#06f27c',
       tabBarInactiveBackgroundColor: '#06f27c',
       tabBarActiveTintColor: 'black'
     }}>
-      <Tab.Screen name='Home' component={Home}/>
-      <Tab.Screen name='Veterinário' component={Veterinario}/>
-      <Tab.Screen name='Banho e Tosa' component={BanhoTosa}/>
-      <Tab.Screen name='Reagendar' component={Reagendar}/>
-      <Tab.Screen name='Visualizar' component={Visualizar}/>
+      <Tab.Screen name='Home' component={Home}
+      options={{
+        tabBarIcon: () => <FontAwesome5 name="home" size={24} color="black" />
+      }}/>
+      <Tab.Screen name='Veterinário' component={Veterinario}
+      options={{
+        tabBarIcon: () => <FontAwesome6 name="user-doctor" size={24} color="black" />
+      }}/>
+      <Tab.Screen name='Banho e Tosa' component={BanhoTosa}
+      options={{
+        tabBarIcon: () => <FontAwesome6 name="bath" size={24} color="black" />
+      }}/>
+      <Tab.Screen name='Reagendar' component={Reagendar}
+      options={{
+        tabBarIcon: () => <MaterialCommunityIcons name="notebook-edit-outline" size={24} color="black" />
+      }}/>
+      <Tab.Screen name='Visualizar' component={Visualizar}
+      options={{
+        tabBarIcon: () => <FontAwesome6 name="list-alt" size={24} color="black" />
+      }}/>
     </Tab.Navigator>
   )
 }

@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { useState } from "react";
 import { db } from "../controller";
 import { collection, doc, addDoc } from 'firebase/firestore';
@@ -31,6 +31,7 @@ export default function BanhoTosa() {
     }
 
     return(
+        <ScrollView>
         <View style={styles.containerLogin}>
             <Text style={styles.textTitle}>Agendar Banho e Tosa</Text>
 
@@ -79,6 +80,7 @@ export default function BanhoTosa() {
             </TouchableOpacity>
 
         </View>
+        </ScrollView>
     )
 }
 

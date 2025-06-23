@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { useState } from "react";
 import { db } from "../controller";
 import { collection, doc, addDoc } from 'firebase/firestore';
@@ -25,12 +25,14 @@ export default function Veterinario() {
             setHorario();
             setRaca();
             setTipoConsulta();
+
         } catch {
             console.log('Erro ao cadastrar produto! ', error)
         }
     }
 
     return(
+        <ScrollView>
         <View style={styles.containerLogin}>
             <Text style={styles.textTitle}>Agendar veterinário</Text>
 
@@ -79,6 +81,7 @@ export default function Veterinario() {
             </TouchableOpacity>
 
         </View>
+        </ScrollView>
     )
 }
 

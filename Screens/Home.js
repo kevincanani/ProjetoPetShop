@@ -7,7 +7,7 @@ export default function Home(){
         <ScrollView>
         <View style={styles.container}>
             <View style={styles.bgali}>
-            <ImageBackground style={styles.imgbg} source={require('../assets/background.jpeg')} />
+            <ImageBackground style={styles.imgbg} source={require('../assets/background.jpg')} />
             </View>
             <Text style={styles.titulo}>Pet & Repet</Text>
             <View style={styles.txtview}>
