@@ -11,12 +11,12 @@ export default function Home(){
             </View>
             <Text style={styles.titulo}>Pet & Repet</Text>
             <View style={styles.txtview}>
-            <Text style={styles.txt2}>Seu pet bem cuidado, limpo e cheiroso
+            <Text style={styles.txt2}>Seu pet bem cuidado, limpo e cheiroso.
             Profissionais selecionados e pertinho de você para deixar seu pet limpinho e cheiroso com a facilidade do agendamento online.
             Tudo para manter a saúde do seu pet em dia
-            Vacinas, consultas e exames com qualidade e carinho.O apoio do veterinário é essencial para qualidade de vida do seu melhor amigo.</Text>
+            Vacinas, consultas e exames com qualidade e carinho. O apoio do veterinário é essencial para qualidade de vida do seu melhor amigo.</Text>
             </View>
-            <Text style={styles.txt3}>Como funciona o atendimento
+            <Text style={styles.txt3}>Como funciona o atendimento: 
             1
             Agende um horário
             Marque pelo site, app, Alô P&R (11) 4002-8922 ou nas lojas físicas.
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         color: '#000',
-        backgroundColor: 'rgba(0, 111, 255, 1)',
+        backgroundColor: 'rgba(6, 242, 124, 1)',
         borderRadius: 10,
         height: 60,
         width:230,

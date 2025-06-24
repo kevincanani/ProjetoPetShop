@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         padding: 15,
         alignSelf: 'center',
         margin: 15,
-        backgroundColor: '#00D8CD'
+        backgroundColor: '#FFF'
     },
     textTitle:{
         padding: 25,
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
         borderColor: '#7B00FF',
         borderWidth: 2,
         borderRadius: 10,
-        backgroundColor: '#00D8CD',
+        backgroundColor: 'rgba(6, 242, 124, 1)',
         margin: 15
     }
 })

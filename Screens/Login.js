@@ -68,12 +68,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         width: 325,
         borderWidth: 2,
-        borderColor: 'rgba(0, 111, 255, 1)',
+        borderColor: '#7B00FF',
         borderRadius: 15,
         padding: 15,
         alignSelf: 'center',
         margin: 15,
-        backgroundColor: 'rgba(6, 242, 124, 1)'
+        backgroundColor: '#FFF'
     },
     textTitle:{
         padding: 25,
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         padding: 15,
         paddingLeft: 30,
         paddingRight: 30,
-        borderColor: 'rgba(0, 111, 255, 1)',
+        borderColor: '#7B00FF',
         borderWidth: 2,
         borderRadius: 10,
         backgroundColor: 'rgba(6, 242, 124, 1)',

@@ -50,7 +50,7 @@ export default function Visualizar() {
         <View style={styles.containerLogin}>
             <Text style={styles.textTitle}>Suas consultas: </Text>
 
-            <Text>Consultas: </Text>
+            <Text style={styles.textType}>Consultas: </Text>
 
             <FlatList
             data={veterinario}
@@ -72,7 +72,7 @@ export default function Visualizar() {
             keyExtractor={item => item.id}
             />
 
-            <Text>Banhos e Tosas: </Text>
+            <Text style={styles.textType}>Banhos e Tosas: </Text>
 
             <FlatList
             data={banhotosa}
@@ -118,13 +118,19 @@ const styles = StyleSheet.create({
         padding: 15,
         alignSelf: 'center',
         margin: 15,
-        backgroundColor: '#00D8CD'
+        backgroundColor: '#FFF'
     },
     textTitle:{
         padding: 25,
         fontSize: 45,
         fontWeight: 'bold',
         alignSelf: 'center'
+    },
+    textType:{
+        padding: 25,
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: '#03095e'
     },
     btn:{
         alignItems: 'center'
@@ -137,7 +143,7 @@ const styles = StyleSheet.create({
         borderColor: '#7B00FF',
         borderWidth: 2,
         borderRadius: 10,
-        backgroundColor: '#00D8CD',
+        backgroundColor: '#06f27c',
         margin: 15
     },
     txtBtn2:{
