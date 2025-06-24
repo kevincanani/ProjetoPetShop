@@ -1,14 +1,10 @@
 import { StyleSheet,View,Text,Image,ScrollView} from "react-native";
-import { ImageBackground } from 'react-native';
 
 export default function Home(){
 
     return(
         <ScrollView>
         <View style={styles.container}>
-            <View style={styles.bgali}>
-            <ImageBackground style={styles.imgbg} source={require('../assets/background.jpg')} />
-            </View>
             <Text style={styles.titulo}>Pet & Repet</Text>
             <View style={styles.txtview}>
             <Text style={styles.txt2}>Seu pet bem cuidado, limpo e cheiroso.
@@ -69,7 +65,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         backgroundColor: 'rgba(6, 242, 124, 1)',
         borderRadius: 5,
-        width: '20%',
+        width: '60%',
         textAlign: 'center',
         margin: 10,
     },
@@ -77,18 +73,17 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         color:'#000',
         fontSize: 18,
-        width: '25%',
+        width: '60%',
         backgroundColor: 'rgba(6, 242, 124, 1)',
         borderRadius: 20,
         textAlign: 'center',
-        padding: 10,
     },
     txt3:{
         fontWeight:'bold',
         margin:10,
         color:'#000',
         fontSize: 18,
-        width: '25%',
+        width: '60%',
         backgroundColor: 'rgba(6, 242, 124, 1)',
         borderRadius: 15,
         textAlign: 'center',
@@ -102,7 +97,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
     },
     imgbg:{
-        width:1400
+        width: 1400
     },
     imgview:{
         flexDirection:'row',
